@@ -9,13 +9,14 @@ app = Flask(__name__)
 
 # === Load Model and Features ===
 try:
+    print("📁 Loading model and features...")
     with open("game_sales_model.pkl", "rb") as model_file:
         model = pickle.load(model_file)
 
     with open("features.pkl", "rb") as features_file:
         features = pickle.load(features_file)
 
-    print("✅ Model and features loaded.")
+    print("✅ Model and features loaded:", type(model), type(features))
 except Exception as e:
     print("❌ Error loading model or features:", e)
     model = None

@@ -3,30 +3,92 @@
 <head>
     <title>Game Sales Predictor</title>
     <style>
-        body { font-family: Arial; background: #f4f4f4; padding: 30px; }
-        .box { background: white; padding: 20px; max-width: 400px; margin: auto; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
-        h2 { text-align: center; }
-        label { font-weight: bold; }
-        input, select, button { width: 100%; padding: 10px; margin-top: 10px; }
-        .result { margin-top: 20px; color: green; font-weight: bold; text-align: center; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+        button {
+            background: #333;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #222;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="box">
         <h2>🎮 Game Sales Predictor</h2>
         <form method="post">
-            <label for="genre">Genre:</label>
-            <input type="text" name="genre" required placeholder="e.g., Action, Puzzle, RPG">
+            <label>Genre:</label>
+            <select name="genre" required>
+                <option disabled selected>Select Genre</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="RPG">RPG</option>
+                <option value="Simulation">Simulation</option>
+                <option value="Sports">Sports</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="Strategy">Strategy</option>
+                <option value="Shooter">Shooter</option>
+            </select>
 
-            <label for="publisher">Publisher:</label>
-            <input type="text" name="publisher" required placeholder="e.g., Nintendo, EA, Sega">
+            <label>Publisher:</label>
+            <select name="publisher" required>
+                <option disabled selected>Select Publisher</option>
+                <option value="Nintendo">Nintendo</option>
+                <option value="Electronic Arts">Electronic Arts</option>
+                <option value="Ubisoft">Ubisoft</option>
+                <option value="Activision">Activision</option>
+                <option value="Sega">Sega</option>
+                <option value="Square Enix">Square Enix</option>
+                <option value="Sony Computer Entertainment">Sony Computer Entertainment</option>
+                <option value="Capcom">Capcom</option>
+            </select>
 
             <button type="submit">Predict Sales</button>
         </form>
 
-        {% if prediction %}
+        {% if message %}
         <div class="result">
-            Predicted Sales: <strong>{{ prediction|round(2) }} million</strong><br>
             {{ message }}
         </div>
         {% endif %}
